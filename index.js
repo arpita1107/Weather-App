@@ -26,6 +26,8 @@ let initCity = "London";
 
 // Adding submit event to the form
 form.submit((event) => {
+    console.log("icon.src:", icon.src);
+
     event.preventDefault();
     /* If the input field (search bar) is empty, throw an alert */
     if (search[0].value.length == 0) {
@@ -65,8 +67,8 @@ function fetchWeatherData(loc) {
         /* take the data which is in JSON format and convert it into JSON Obj */
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            temp.text(data.current.temp_c);
+            console.log("data:",data);
+            temp.text(data.current.temp_c+"°");
             conditionOutput.text(data.current.condition.text);
 
             // const date = data.location.localtime;
@@ -90,8 +92,9 @@ function fetchWeatherData(loc) {
             const iconId = data.current.condition.icon.substr(
                 "//cdn.weatherapi.com/weather/64x64/".length
             );
+
             // Reformat the URL to your local folder path and add it to the page
-            icon.src = "./icons/" + iconId;
+            icon[0].src = "./icons/" + iconId;
 
             // adding the weather details of the selected city to the page
             cloudOutput.text(data.current.cloud + "%");
@@ -167,6 +170,7 @@ function fetchWeatherData(loc) {
                 }
             }
             app.css("opacity", 1);
+
         })
 
         // if the user types a city that doesn't exist throw an alert

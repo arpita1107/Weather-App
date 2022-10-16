@@ -13,6 +13,12 @@ h1 {
   font-weight: 400;
 }
 
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items:baseline;
+}
+
 .weather-app {
   min-height: 100vh;
   background-image: url(images/day/cloudy.jpg);
@@ -43,23 +49,32 @@ h1 {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
   padding: 2em 3em 4em 3em;
 }
 
-.container > div {
+/* .container > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+} */
+
+
+.weather {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.city-time,
-.temp,
-.weather {
-  margin: 0 1em;
+.align-down {
+  display: block;
+}
+
+.city-time {
+  margin-top: 10em;
 }
 
 .city-time h1 {
@@ -68,9 +83,12 @@ h1 {
   font-size: 3em;
 }
 
-.temp {
-  font-size: 7em;
-  margin: 0;
+.city-time > span {
+  font-size: larger;
+}
+
+#temp {
+  font-size: 3em !important;
 }
 
 .weather img {
@@ -99,9 +117,16 @@ h1 {
 }
 
 .submit {
+  position:inherit;
+  height: 40px;
+  width:90px;
+  font-size: medium;
+  border-radius: 10px;
+  background-color: #ccc !important;
+  border: none;
 }
 
-.submit:focus {
+/* .submit:focus {
   position: absolute;
   top: 0;
   right: 0;
@@ -114,11 +139,14 @@ h1 {
   cursor: pointer;
   font-size: 1.2em;
   transition: 0.4s;
-}
+} */
 
 .submit:hover {
+  transform:scale(1.03,1.03);
+  cursor: pointer;
   background: #fff !important;
   color: #000;
+  transition: 0.2s;
 }
 
 .search {
@@ -167,6 +195,11 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.acknowledgment {
+  margin-top: auto;
+  color: #ccc;
 }
 
 @media screen and (max-width: 800px) {
